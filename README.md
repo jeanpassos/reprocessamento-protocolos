@@ -1,38 +1,88 @@
-# CSV Import Project
+<p align="center">
+  <img src="caminho/para/sua/logo.png" alt="Logo do Projeto" width="200">
+</p>
 
-Este projeto permite importar arquivos CSV para um banco de dados PostgreSQL. O usuário pode enviar um arquivo CSV através de uma interface web, e o servidor processa o arquivo e insere os dados no banco de dados.
+<h1 align="center" style="color:#3498db;">CSV Import Project</h1>
 
-## Estrutura do Projeto
+<p align="center" style="color:#2ecc71;">
+  Este projeto é uma aplicação em Node.js que permite o upload de arquivos CSV para inserção de seus dados em um banco de dados PostgreSQL.
+</p>
 
-- **`public/`**: Contém arquivos estáticos servidos pelo Express.
-  - **`index.html`**: Página HTML com o formulário para upload de arquivos CSV e uma área para mostrar o progresso.
-  
-- **`uploads/`**: Pasta onde os arquivos CSV enviados pelos usuários são armazenados temporariamente antes de serem processados.
-  
-- **`server.js`**: Arquivo principal do servidor Node.js que configura o Express, manipula o upload de arquivos CSV, processa o CSV e insere os dados no PostgreSQL.
-  
-- **`package.json`**: Arquivo de configuração do projeto Node.js que lista as dependências e scripts do projeto.
-  
-- **`package-lock.json`**: Arquivo gerado automaticamente que mantém o controle das versões exatas das dependências instaladas.
+## Funcionalidades
+
+- <span style="color:#e74c3c;">Upload de arquivos CSV</span> através de uma interface web.
+- <span style="color:#e74c3c;">Processamento dos dados</span> do CSV e inserção no banco de dados PostgreSQL.
+- <span style="color:#e74c3c;">Remoção automática dos arquivos</span> CSV após o processamento.
+
+## Tecnologias Utilizadas
+
+- ![Node.js](https://img.shields.io/badge/Node.js-16.x-brightgreen) - Plataforma JavaScript para backend.
+- ![Express](https://img.shields.io/badge/Express-4.x-blue) - Framework web para Node.js.
+- ![Multer](https://img.shields.io/badge/Multer-1.4.2-yellow) - Middleware para gerenciamento de uploads de arquivos.
+- ![csv-parser](https://img.shields.io/badge/csv--parser-3.x-orange) - Biblioteca para parsing de arquivos CSV.
+- ![pg](https://img.shields.io/badge/pg-8.x-red) - Cliente PostgreSQL para Node.js.
 
 ## Pré-requisitos
 
-Antes de iniciar, verifique se você tem as seguintes ferramentas instaladas:
+Antes de iniciar, certifique-se de ter o [Node.js](https://nodejs.org/) instalado em sua máquina, assim como o PostgreSQL configurado.
 
-- [Node.js](https://nodejs.org/)
-- [PostgreSQL](https://www.postgresql.org/)
+## Instalação
 
-## Configuração
-
-1. **Clone o Repositório**
-
-   ```bash
-   git clone https://github.com/seu_usuario/csv-import-project.git
-   cd csv-import-project
-
-2. **Instale as Dependências**
-   ```bash
-   npm install
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/seu-usuario/csv-import-project.git
+    ```
    
-  Atualize as configurações de banco de dados no arquivo server.js com as credenciais do ambiente de produção.
+2. Navegue até o diretório do projeto:
+    ```bash
+    cd csv-import-project
+    ```
 
+3. Instale as dependências:
+    ```bash
+    npm install
+    ```
+
+4. Configure as credenciais do banco de dados PostgreSQL no arquivo `server.js`:
+    ```javascript
+    const client = new Client({
+      host: 'localhost',
+      port: 5432,
+      user: 'seu_usuario',
+      password: 'sua_senha',
+      database: 'nome_do_banco'
+    });
+    ```
+
+5. Crie as pastas necessárias:
+    ```bash
+    mkdir uploads
+    ```
+
+## Uso
+
+1. Inicie o servidor:
+    ```bash
+    npm start
+    ```
+
+2. Acesse `http://localhost:3000` no navegador para visualizar a página de upload.
+
+3. Faça o upload de um arquivo CSV e veja os dados sendo inseridos no banco de dados.
+
+## Estrutura de Pastas
+
+```plaintext
+csv-import-project/
+│
+├── public/
+│   └── index.html              # Página HTML para upload do CSV
+│
+├── uploads/                    # Diretório para armazenar arquivos CSV temporários
+│   └── (arquivos CSV enviados)
+│
+├── server.js                   # Arquivo principal do servidor Node.js
+│
+├── package.json                # Arquivo de configuração do projeto Node.js
+│
+└── README.md                   # Documentação do projeto
