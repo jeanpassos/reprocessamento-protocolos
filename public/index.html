@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importar CSV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .progress {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Importar CSV</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
+            <button type="submit">Importar</button>
+        </form>
+        <div class="progress" id="progress"></div>
+    </div>
+    
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('csvFile');
+            const file = fileInput.files[0];
+            
+            if (file) {
+                const formData = new FormData();
+                formData.append('csvFile', file);
+                
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('progress').textContent = data.message;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.getElementById('progress').textContent = 'Erro ao importar arquivo.';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
