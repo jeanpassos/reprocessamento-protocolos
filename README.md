@@ -126,3 +126,7 @@ Se você tiver alguma dúvida ou precisar de ajuda, entre em contato:
 - **Email:** [jean@scsite.com.br](mailto:jean@scsite.com.br)
 - **GitHub:** [jeanpassos](https://github.com/jeanpassos)
 
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
