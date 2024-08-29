@@ -31,3 +31,8 @@ Antes de iniciar, verifique se você tem as seguintes ferramentas instaladas:
    cd csv-import-project
 
 2. **Instale as Dependências**
+   ```bash
+   npm install
+   
+  Atualize as configurações de banco de dados no arquivo server.js com as credenciais do ambiente de produção.
+
