@@ -86,3 +86,45 @@ csv-import-project/
 ├── package.json                # Arquivo de configuração do projeto Node.js
 │
 └── README.md                   # Documentação do projeto
+
+## Executar no Servidor
+
+1. Utilize um gerenciador de processos como PM2 para iniciar e gerenciar o processo Node.js:
+    ```bash
+    npm install -g pm2
+    pm2 start server.js --name csv-import-project
+
+    ```
+2. Configure o PM2 para iniciar automaticamente na inicialização do sistema:
+   ```bash
+   pm2 startup
+   pm2 save
+
+    ```
+## Configuração de Proxy Reverso (Opcional)
+
+1. Utilize um gerenciador de processos como PM2 para iniciar e gerenciar o processo Node.js:
+    ```bash
+    server {
+      listen 80;
+      server_name seu_dominio.com;
+
+      location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
+
+    ```
+
+## Contato
+
+Se você tiver alguma dúvida ou precisar de ajuda, entre em contato:
+
+- **Nome:** Jean Passos
+- **Email:** [jean@scsute.com.br](mailto:jean@scsute.com.br)
+- **GitHub:** [jeanpassos](https://github.com/jeanpassos)
+
